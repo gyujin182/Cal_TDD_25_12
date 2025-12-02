@@ -3,28 +3,27 @@ package org.example;
 public class Calc {
 
     public static int run(String exp) {
+        exp = exp.replace("- ", "+ -");
+        String[] bits = exp.split(" \\+ | \\* ");
+        boolean needTomul = exp.contains("* ");
+        int multiplier = 1;
+        if (needTomul) {
+            for (int i = 0; i < bits.length; i++) {
+                multiplier *= Integer.parseInt(bits[i]);
+            }
 
-        boolean needToPlus = exp.contains("+");
-        boolean needToMinus = exp.contains("-");
+            return multiplier;
+        }
+        int sum = 0;
 
-        String[] bits = null;
-
-        if (needToPlus) {
-            bits = exp.split(" \\+ ");
-        } else if (needToMinus) {
-            bits = exp.split(" - ");
+        for (int i = 0; i < bits.length; i++) {
+            sum += Integer.parseInt(bits[i]);
         }
 
-        int a = Integer.parseInt(bits[0]);
-        int b = Integer.parseInt(bits[1]);
+        return sum;
 
-        if (needToPlus) {
-            return a + b;
-        } else if (needToMinus) {
-            return a - b;
-        }
 
-        throw new RuntimeException("해석 불가 : 올바른 계산식이 아님");
+//        throw new RuntimeException("해석 불가 : 올바른 계산식이 아님");
     }
 
 
