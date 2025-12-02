@@ -21,7 +21,6 @@ public class Calc {
         boolean needToCompound = needToPlus && needToMulti;
 
         exp = exp.replace("- ", "+ -");
-        
         if (needToCompound) {
             String[] bits = exp.split(" \\+ ");
 
@@ -59,14 +58,12 @@ public class Calc {
     }
 
     private static String stripOuterBrackets(String exp) {
-        for (int i = 0; i < exp.length(); i++) {
-            if (exp.charAt(0) == '(' && exp.charAt(exp.length() - 1) == ')') {
-                exp = exp.substring(1, exp.length() - 1);
-            }
+        exp = exp.replace("(", "");
+        exp = exp.replace("(", "");
+        return exp; }
         }
-        return exp;
-
-    }
 
 
-}
+    
+
+
