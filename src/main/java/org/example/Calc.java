@@ -47,7 +47,8 @@ public class Calc {
                     return Calc.run(exp);
 
                 }
-            } if (exp.charAt(0) != '('){
+            }
+            else if (exp.charAt(0) != '(') {
                 for (int j = 5; j < exp.length(); j++) {
                     if (exp.charAt(j) == '(') {
                         bracketsCount++;
@@ -61,10 +62,10 @@ public class Calc {
                 }
 
             }
-            String firstExp = exp.substring(0,2);
+            String firstExp = exp.substring(0, 2);
             String secondExp = exp.substring(6, splitPointIndex);
 
-            char operator = exp.charAt(splitPointIndex -3);
+            char operator = exp.charAt(splitPointIndex - 3);
 
             exp = Calc.run(firstExp) + " " + operator + " " + secondExp;
 
